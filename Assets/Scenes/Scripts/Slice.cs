@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slice : MonoBehaviour
-{
+public class Slice : MonoBehaviour {
+    public KeyCode AttackKey; // Input for Attacks
+    public GameObject Scythe;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         
     }
 
@@ -15,5 +15,11 @@ public class Slice : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void Attack() {
+        if (Input.GetKeyDown(AttackKey)) {
+            Scythe.transform.Rotate(new Vector3 (0, 90, 0));
+        }
     }
 }
