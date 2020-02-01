@@ -86,19 +86,19 @@ public class PlayerController : MonoBehaviour
 		    {
 			    if (rb.velocity.y > 0) //Up right
 			    {
-				    animator.SetFloat("Direction", 2);
+				    animator.SetInteger("Direction", 2);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
 			    }
 			    else if (rb.velocity.y < 0) //Down right
 			    {
-				    animator.SetFloat("Direction", 3);
+				    animator.SetInteger("Direction", 3);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
 			    }
 			    else //Right
 			    {
-				    animator.SetFloat("Direction", 1);
+				    animator.SetInteger("Direction", 1);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
 			    }
@@ -107,19 +107,19 @@ public class PlayerController : MonoBehaviour
 		    {
 			    if (rb.velocity.y > 0) //Up left
 			    {
-				    animator.SetFloat("Direction", 2);
+				    animator.SetInteger("Direction", 2);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
 			    }
 			    else if (rb.velocity.y < 0) //Down left
 			    {
-				    animator.SetFloat("Direction", 3);
+				    animator.SetInteger("Direction", 3);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
 			    }
 			    else //Left
 			    {
-				    animator.SetFloat("Direction", 1);
+				    animator.SetInteger("Direction", 1);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
 			    }
@@ -128,13 +128,13 @@ public class PlayerController : MonoBehaviour
 		    {
 			    if (rb.velocity.y > 0) //Up
 			    {
-				    animator.SetFloat("Direction", 4);
+				    animator.SetInteger("Direction", 4);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
 			    }
 			    else if (rb.velocity.y < 0) //Down
 			    {
-				    animator.SetFloat("Direction", 0);
+				    animator.SetInteger("Direction", 0);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
 			    }
