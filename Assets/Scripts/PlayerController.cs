@@ -9,12 +9,13 @@ public class PlayerController : MonoBehaviour
 
 	private Rigidbody2D rb;
 
+	
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 	}
 
-    void Update()
+    void FixedUpdate()
     {
 	    if(CanMove)
 			Move();
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     		{
     			tempVel.x = Mathf.Lerp(tempVel.x, MoveSpeed, 0.2f);
     		}
-		    if (Input.GetKey(KeyCode.A))
+		    else if (Input.GetKey(KeyCode.A))
     		{
     			tempVel.x = Mathf.Lerp(tempVel.x, -MoveSpeed, 0.2f);
     		}
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
     		{
     			tempVel.y = Mathf.Lerp(tempVel.y, MoveSpeed, 0.2f);
     		}
-		    if (Input.GetKey(KeyCode.S))
+		    else if (Input.GetKey(KeyCode.S))
     		{
     			tempVel.y = Mathf.Lerp(tempVel.y, -MoveSpeed, 0.2f);
     		}
@@ -50,6 +51,6 @@ public class PlayerController : MonoBehaviour
     			tempVel.y = Mathf.Lerp(tempVel.y, 0, 0.2f);
     		}
     		
-    		rb.velocity = tempVel;
+    		rb.velocity = tempVel.normalized * MoveSpeed;
     	}
 }
