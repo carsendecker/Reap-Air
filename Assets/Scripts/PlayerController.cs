@@ -8,17 +8,24 @@ public class PlayerController : MonoBehaviour
 	public bool CanMove = true;
 
 	private Rigidbody2D rb;
+	private Animator animator;
+	private SpriteRenderer sr;
+	
 	private const float ScaleIncrease = 1.05f;
+	
 	private Vector3 newScale;
 	private float cameraSize;
 	private float growthValue;
-
+	private bool isFacingLeft;
 	
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		newScale = transform.localScale;
 		cameraSize = Camera.main.orthographicSize;
+
+		animator = GetComponent<Animator>();
+		sr = GetComponent<SpriteRenderer>();
 	}
 
 	private void Update()
@@ -30,6 +37,11 @@ public class PlayerController : MonoBehaviour
 
 		transform.localScale = Vector3.Lerp(transform.localScale, newScale, 0.1f);
 		Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, cameraSize, 0.05f);
+
+		if (isFacingLeft)
+			sr.flipX = true;
+		else
+			sr.flipX = false;
 	}
 
 	void FixedUpdate()
@@ -45,11 +57,11 @@ public class PlayerController : MonoBehaviour
     		if (Input.GetKey(KeyCode.D))
     		{
     			tempVel.x = Mathf.Lerp(tempVel.x, MoveSpeed, 0.2f);
-    		}
+		    }
 		    else if (Input.GetKey(KeyCode.A))
     		{
     			tempVel.x = Mathf.Lerp(tempVel.x, -MoveSpeed, 0.2f);
-    		}
+		    }
     		else
     		{
     			tempVel.x = Mathf.Lerp(tempVel.x, 0, 0.2f);
@@ -69,6 +81,68 @@ public class PlayerController : MonoBehaviour
     		}
     		
     		rb.velocity = tempVel;
+
+		    if (rb.velocity.x > 0)
+		    {
+			    if (rb.velocity.y > 0) //Up right
+			    {
+				    animator.SetFloat("Direction", 2);
+				    animator.SetBool("isWalking", true);
+				    isFacingLeft = false;
+			    }
+			    else if (rb.velocity.y < 0) //Down right
+			    {
+				    animator.SetFloat("Direction", 3);
+				    animator.SetBool("isWalking", true);
+				    isFacingLeft = false;
+			    }
+			    else //Right
+			    {
+				    animator.SetFloat("Direction", 1);
+				    animator.SetBool("isWalking", true);
+				    isFacingLeft = false;
+			    }
+		    }
+		    else if (rb.velocity.x < 0)
+		    {
+			    if (rb.velocity.y > 0) //Up left
+			    {
+				    animator.SetFloat("Direction", 2);
+				    animator.SetBool("isWalking", true);
+				    isFacingLeft = true;
+			    }
+			    else if (rb.velocity.y < 0) //Down left
+			    {
+				    animator.SetFloat("Direction", 3);
+				    animator.SetBool("isWalking", true);
+				    isFacingLeft = true;
+			    }
+			    else //Left
+			    {
+				    animator.SetFloat("Direction", 1);
+				    animator.SetBool("isWalking", true);
+				    isFacingLeft = true;
+			    }
+		    }
+		    else
+		    {
+			    if (rb.velocity.y > 0) //Up
+			    {
+				    animator.SetFloat("Direction", 4);
+				    animator.SetBool("isWalking", true);
+				    isFacingLeft = false;
+			    }
+			    else if (rb.velocity.y < 0) //Down
+			    {
+				    animator.SetFloat("Direction", 0);
+				    animator.SetBool("isWalking", true);
+				    isFacingLeft = false;
+			    }
+			    else //Idle
+			    {
+				    animator.SetBool("isWalking", false);
+			    }
+		    }
     	}
 
 	private void OnTriggerEnter2D(Collider2D other)
