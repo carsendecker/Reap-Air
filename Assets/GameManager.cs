@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private void TimePasses()
     {
         CurrentYear += Time.deltaTime * TimePassSpeed;
-        YearText.text = CurrentYear.ToString("F0") + " AD";
+        YearText.text = CurrentYear.ToString("F0") + " ad";
 
         if (CurrentYear > YearLimit)
             GameLost();
