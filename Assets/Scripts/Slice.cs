@@ -14,12 +14,13 @@ public class Slice : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+        Attack();
     }
 
     void Attack() {
         if (Input.GetKeyDown(AttackKey)) {
-            Scythe.transform.Rotate(new Vector3 (0, 90, 0));
+            Scythe.transform.Rotate(new Vector3 (0, 0, 10));
+            // Debug.Log("Clicked");
         }
     }
 }
