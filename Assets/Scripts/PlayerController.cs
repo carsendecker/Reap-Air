@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	private const float ScaleIncrease = 1.05f;
 	private Vector3 newScale;
 	private float cameraSize;
+	private float growthValue;
 
 	
 	void Start()
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
 		newScale *= ScaleIncrease;
 		cameraSize *= ScaleIncrease;
 		MoveSpeed *= ScaleIncrease;
+		growthValue += 1;
 	}
 	
 }
