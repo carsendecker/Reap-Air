@@ -82,65 +82,78 @@ public class PlayerController : MonoBehaviour
     		
     		rb.velocity = tempVel;
 
-		    if (rb.velocity.x > 0.01)
+			if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) {
+				animator.SetInteger("Direction", -1);
+			}
+
+		    if (rb.velocity.x > 0.1f)
 		    {
-			    if (rb.velocity.y > 0.01) //Up right
+			    if (rb.velocity.y > 0.1f) //Up right
 			    {
 				    animator.SetInteger("Direction", 2);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
+					Debug.Log("Up Right");
 			    }
-			    else if (rb.velocity.y < -0.01) //Down right
+			    else if (rb.velocity.y < -0.1f) //Down right
 			    {
 				    animator.SetInteger("Direction", 3);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
+					Debug.Log("Down Right");
 			    }
 			    else //Right
 			    {
 				    animator.SetInteger("Direction", 1);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
+					Debug.Log("Right");
 			    }
 		    }
-		    else if (rb.velocity.x < 0.01)
+		    else if (rb.velocity.x < -0.1f)
 		    {
-			    if (rb.velocity.y > 0.01) //Up left
+			    if (rb.velocity.y > 0.1f) //Up left
 			    {
 				    animator.SetInteger("Direction", 2);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
+					Debug.Log("Up Left");
 			    }
-			    else if (rb.velocity.y < -0.01) //Down left
+			    else if (rb.velocity.y < -0.1f) //Down left
 			    {
 				    animator.SetInteger("Direction", 3);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
+					Debug.Log("Down Left");
 			    }
 			    else //Left
 			    {
 				    animator.SetInteger("Direction", 1);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
+					Debug.Log("Left");
 			    }
 		    }
 		    else
 		    {
-			    if (rb.velocity.y > 0.01) //Up
+			    if (rb.velocity.y > 0.1f) //Up
 			    {
 				    animator.SetInteger("Direction", 4);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
+					Debug.Log("Up");
 			    }
-			    else if (rb.velocity.y < -0.01) //Down
+			    else if (rb.velocity.y < -0.1f) //Down
 			    {
 				    animator.SetInteger("Direction", 0);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
+					Debug.Log("Down");
 			    }
 			    else //Idle
 			    {
 				    animator.SetBool("isWalking", false);
+					Debug.Log("Idle");
 			    }
 		    }
     	}
