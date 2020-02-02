@@ -3,24 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Facing
+{
+	Up = 0,
+	Down = 1,
+	Left = 2,
+	Right = 3,
+	UpRight = 4,
+	UpLeft = 5,
+	DownRight = 6,
+	DownLeft = 7
+}
+
 public class PlayerController : MonoBehaviour
 {
-	enum Facing
-	{
-		Up = 0,
-		Down = 1,
-		Left = 2,
-		Right = 3,
-		UpRight = 4,
-		UpLeft = 5,
-		DownRight = 6,
-		DownLeft = 7
-	}
 	
 	public float MoveSpeed;
 	public bool CanMove = true;
 	public float GrowCircleRadius;
 	public float DashCooldown;
+	public float GrowthValue;
 	[HideInInspector] public bool isFacingLeft;
 
 	private Rigidbody2D rb;
@@ -31,7 +33,6 @@ public class PlayerController : MonoBehaviour
 	
 	private Vector3 newScale;
 	private float cameraSize;
-	private float growthValue;
 	private bool dashing;
 	private Facing FaceDir;
 	
@@ -193,11 +194,12 @@ public class PlayerController : MonoBehaviour
 
 	private IEnumerator Dash()
 	{
-//		switch (FaceDir)
-//		{
-//			case 0:
-//				
-//		}
+		switch (FaceDir)
+		{
+			case 0:
+				rb.AddForce(new Vector2());
+				break;
+		}
 		yield return 0;
 	}
 
@@ -215,7 +217,7 @@ public class PlayerController : MonoBehaviour
 		newScale *= ScaleIncrease;
 		cameraSize *= ScaleIncrease;
 		MoveSpeed *= ScaleIncrease;
-		growthValue += 1;
+		GrowthValue += 1;
 
 		Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, GrowCircleRadius);
 

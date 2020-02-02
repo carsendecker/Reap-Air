@@ -28,17 +28,6 @@ public class DecorManager : MonoBehaviour
 
         GrowablesInScene.Add(obj);
     }
-    
-    public void RemoveRandomObject(float numberToRemove)
-    {
-        for (int i = 0; i < numberToRemove; i++)
-        {
-            GameObject toRemove = RemovablesInScene[Random.Range(0, RemovablesInScene.Count)];
-            RemovablesInScene.Remove(toRemove);
-            
-            Destroy(toRemove);
-        }
-    }
 
     public void GrowObject(GameObject toGrow)
     {
