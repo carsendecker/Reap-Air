@@ -11,6 +11,7 @@ public class ScytheSwing : MonoBehaviour {
     public PlayerController pc;
     public SpriteRenderer sr;
     public float lerpSpeed = 0.4f;
+    public ScytheBehavior sb;
 
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class ScytheSwing : MonoBehaviour {
 
         if (Input.GetKeyDown(attackButton) && !midAttack) {
             midAttack = true;
+            sb.attacking = true;
             StartCoroutine(Swing(direction));
         }
 
@@ -204,21 +206,6 @@ public class ScytheSwing : MonoBehaviour {
         }
                 
         midAttack = false;
-
-
-
-        // for (int i = 0; i < 120 / swingSpeed; i++) {
-        //     scythe.transform.Rotate(new Vector3(0f, 0f, swingSpeed / 2));
-        //     yield return 0;
-        // }
-        // for (int i = 0; i < 120 / swingSpeed; i++) {
-        //     scythe.transform.Rotate(new Vector3(0f, 0f, swingSpeed * 2));
-        //     yield return 0;
-        // }
-        // for (int i = 0; i < 120 / swingSpeed; i++) {
-        //     scythe.transform.Rotate(new Vector3(0f, 0f, swingSpeed / 2));
-        //     yield return 0;
-        // }
-        // midAttack = false;
+        sb.attacking = false;
     }
 }
