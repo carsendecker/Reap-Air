@@ -68,9 +68,12 @@ public class PlayerController : MonoBehaviour
 			StartCoroutine(Dash());
 		}
 
+
 		if (GrowthValue >= 30) {
-			SceneManager.LoadScene("WIN");
+			SceneManager.LoadScene("Win");
+			Debug.Log("W");
 		}
+		GameObject.FindWithTag("Grass").GetComponent<GrassColorChange>().transition = GrowthValue / 20;
 	}
 
 	void FixedUpdate()

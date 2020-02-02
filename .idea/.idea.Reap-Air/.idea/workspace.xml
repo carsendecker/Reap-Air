@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="449d6a3d-284e-4cf6-b2cf-a0c7e60f6e04" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Reap-Air/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reap-Air/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,12 +20,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="5447" />
+          <entry key="cs" value="5473" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="5447" />
+          <entry key="C#" value="5473" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -45,7 +42,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="262">
@@ -89,7 +86,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/EnemyBehavior.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
@@ -128,11 +125,11 @@
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Growable.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="184">
-              <caret line="10" column="60" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
+              <caret line="10" column="96" selection-start-line="10" selection-start-column="96" selection-end-line="10" selection-end-column="96" />
               <folding>
-                <marker date="1580591748652" expanded="false" signature="6:78" ph="..." />
-                <marker date="1580591748652" expanded="true" signature="117:253" ph="{...}" />
-                <marker date="1580591748652" expanded="true" signature="178:251" ph="{...}" />
+                <marker date="1580674477729" expanded="false" signature="6:78" ph="..." />
+                <marker date="1580674477729" expanded="true" signature="117:295" ph="{...}" />
+                <marker date="1580674477729" expanded="true" signature="181:293" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -190,12 +187,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Growable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyBehavior.cs" />
         <option value="$PROJECT_DIR$/Assets/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FlyToPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DecorManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Growable.cs" />
       </list>
     </option>
   </component>
@@ -268,12 +265,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1580530665707</updated>
-      <workItem from="1580530670269" duration="25865000" />
+      <workItem from="1580530670269" duration="26536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25865000" />
+    <option name="totallyTimeSpent" value="26536000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -390,14 +387,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/EnemyBehavior.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding>
+            <marker date="1580662293274" expanded="false" signature="6:78" ph="..." />
+            <marker date="1580662293274" expanded="true" signature="123:1058" ph="{...}" />
+            <marker date="1580662293274" expanded="true" signature="398:410" ph="{...}" />
+            <marker date="1580662293274" expanded="true" signature="469:539" ph="{...}" />
+            <marker date="1580662293274" expanded="true" signature="593:671" ph="{...}" />
+            <marker date="1580662293274" expanded="true" signature="635:665" ph="{...}" />
+            <marker date="1580662293274" expanded="true" signature="687:1056" ph="{...}" />
+            <marker date="1580662293274" expanded="true" signature="745:1025" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Growable.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
-          <caret line="10" column="60" selection-start-line="10" selection-start-column="60" selection-end-line="10" selection-end-column="60" />
+          <caret line="10" column="96" selection-start-line="10" selection-start-column="96" selection-end-line="10" selection-end-column="96" />
           <folding>
-            <marker date="1580591748652" expanded="false" signature="6:78" ph="..." />
-            <marker date="1580591748652" expanded="true" signature="117:253" ph="{...}" />
-            <marker date="1580591748652" expanded="true" signature="178:251" ph="{...}" />
+            <marker date="1580674477729" expanded="false" signature="6:78" ph="..." />
+            <marker date="1580674477729" expanded="true" signature="117:295" ph="{...}" />
+            <marker date="1580674477729" expanded="true" signature="181:293" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -440,23 +454,6 @@
             <marker date="1580674042555" expanded="true" signature="5757:5812" ph="{...}" />
             <marker date="1580674042555" expanded="true" signature="5842:6343" ph="{...}" />
             <marker date="1580674042555" expanded="true" signature="6240:6340" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/EnemyBehavior.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-          <folding>
-            <marker date="1580662293274" expanded="false" signature="6:78" ph="..." />
-            <marker date="1580662293274" expanded="true" signature="123:1058" ph="{...}" />
-            <marker date="1580662293274" expanded="true" signature="398:410" ph="{...}" />
-            <marker date="1580662293274" expanded="true" signature="469:539" ph="{...}" />
-            <marker date="1580662293274" expanded="true" signature="593:671" ph="{...}" />
-            <marker date="1580662293274" expanded="true" signature="635:665" ph="{...}" />
-            <marker date="1580662293274" expanded="true" signature="687:1056" ph="{...}" />
-            <marker date="1580662293274" expanded="true" signature="745:1025" ph="{...}" />
           </folding>
         </state>
       </provider>
