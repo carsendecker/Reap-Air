@@ -22,6 +22,7 @@ public class ScytheBehavior : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Carbon" && attacking) {
             Destroy(other.gameObject);
+            // DEATH PARTICLES
         }
 
         if (other.tag == "Oxygen" && attacking) {
