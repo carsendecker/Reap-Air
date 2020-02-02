@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScytheBehavior : MonoBehaviour {
     public Collider2D enemyCollider;
-    public bool invincible;
+    public bool attacking;
     public GameObject carbon;
     public GameObject oxygen;
     public GameObject scythe;
@@ -20,14 +20,13 @@ public class ScytheBehavior : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Carbon" && !invincible) {
-            Destroy(carbon);
+        if (other.tag == "Carbon" && attacking) {
+            Destroy(other.gameObject);
+            // DEATH PARTICLES
         }
 
-        if (other.tag == "Oxygen") {
-            Debug.Log("Ox");
-            scythe.transform.Rotate(new Vector3(0f, 0f, -10f));
-            invincible = true;
+        if (other.tag == "Oxygen" && attacking) {
+            attacking = false;
         }
     }
 }

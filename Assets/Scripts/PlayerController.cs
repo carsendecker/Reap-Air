@@ -1,12 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Facing
+{
+	Up = 0,
+	Down = 1,
+	Left = 2,
+	Right = 3,
+	UpRight = 4,
+	UpLeft = 5,
+	DownRight = 6,
+	DownLeft = 7
+}
+
 public class PlayerController : MonoBehaviour
 {
+	
 	public float MoveSpeed;
 	public bool CanMove = true;
 	public float GrowCircleRadius;
+	public float DashCooldown;
+	public float GrowthValue;
+	public float DashForce;
+	
+	public Facing FaceDir;
+	[HideInInspector] public bool isFacingLeft;
+
+	[Space(10)] 
+	public ParticleSystem PuffParticles;
+	public ParticleSystem DashParticles;
 
 	private Rigidbody2D rb;
 	private Animator animator;
@@ -16,8 +40,7 @@ public class PlayerController : MonoBehaviour
 	
 	private Vector3 newScale;
 	private float cameraSize;
-	private float growthValue;
-	private bool isFacingLeft;
+	private bool dashing;
 	
 	void Start()
 	{
@@ -31,11 +54,6 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.G))
-		{
-			GrowPlayer();
-		}
-
 		transform.localScale = Vector3.Lerp(transform.localScale, newScale, 0.1f);
 		Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, cameraSize, 0.05f);
 
@@ -43,6 +61,13 @@ public class PlayerController : MonoBehaviour
 			sr.flipX = true;
 		else
 			sr.flipX = false;
+
+		if (Input.GetKeyDown(KeyCode.LeftShift) && !dashing)
+		{
+			StartCoroutine(Dash());
+		}
+
+		GameObject.FindWithTag("Grass").GetComponent<GrassColorChange>().transition = GrowthValue / 20;
 	}
 
 	void FixedUpdate()
@@ -93,7 +118,8 @@ public class PlayerController : MonoBehaviour
 			if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) {
 				animator.SetInteger("Direction", -1);
 				animator.SetBool("isWalking", false);
-				
+				FaceDir = Facing.Down;
+
 			}
 
 		    if (rb.velocity.x > 0.1f)
@@ -103,21 +129,23 @@ public class PlayerController : MonoBehaviour
 				    animator.SetInteger("Direction", 2);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
-					Debug.Log("Up Right");
+				    FaceDir = Facing.UpRight;
+
 			    }
 			    else if (rb.velocity.y < -0.1f) //Down right
 			    {
 				    animator.SetInteger("Direction", 3);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
-					Debug.Log("Down Right");
+				    FaceDir = Facing.DownRight;
+
 			    }
 			    else //Right
 			    {
 				    animator.SetInteger("Direction", 1);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
-					Debug.Log("Right");
+				    FaceDir = Facing.Right;
 			    }
 		    }
 		    else if (rb.velocity.x < -0.1f)
@@ -127,21 +155,24 @@ public class PlayerController : MonoBehaviour
 				    animator.SetInteger("Direction", 2);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
-					Debug.Log("Up Left");
+				    FaceDir = Facing.UpLeft;
+
 			    }
 			    else if (rb.velocity.y < -0.1f) //Down left
 			    {
 				    animator.SetInteger("Direction", 3);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
-					Debug.Log("Down Left");
+				    FaceDir = Facing.DownLeft;
+
 			    }
 			    else //Left
 			    {
 				    animator.SetInteger("Direction", 1);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = true;
-					Debug.Log("Left");
+				    FaceDir = Facing.Left;
+
 			    }
 		    }
 		    else
@@ -151,21 +182,67 @@ public class PlayerController : MonoBehaviour
 				    animator.SetInteger("Direction", 4);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
-					Debug.Log("Up");
+				    FaceDir = Facing.Up;
+
 			    }
 			    else if (rb.velocity.y < -0.1f) //Down
 			    {
 				    animator.SetInteger("Direction", 0);
 				    animator.SetBool("isWalking", true);
 				    isFacingLeft = false;
-					Debug.Log("Down");
+				    FaceDir = Facing.Down;
 			    }
 			    else //Idle
 			    {
 				    animator.SetBool("isWalking", false);
+				    FaceDir = Facing.Down;
 			    }
 		    }
     	}
+
+	private IEnumerator Dash()
+	{
+		CanMove = false;
+		dashing = true; 
+		
+		switch (FaceDir)
+		{
+			case Facing.Up:
+				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+				break;
+			case Facing.Down:
+				rb.AddForce(new Vector2(0, -DashForce), ForceMode2D.Impulse);
+				break;
+			case Facing.Left:
+				rb.AddForce(new Vector2(-DashForce, 0), ForceMode2D.Impulse);
+				break;
+			case Facing.Right:
+				rb.AddForce(new Vector2(DashForce, 0), ForceMode2D.Impulse);
+				break;
+			case Facing.UpRight:
+				rb.AddForce(new Vector2(DashForce / 1.5f, DashForce / 1.5f), ForceMode2D.Impulse);
+				break;
+			case Facing.UpLeft:
+				rb.AddForce(new Vector2(-DashForce / 1.5f, DashForce / 1.5f), ForceMode2D.Impulse);
+				break;
+			case Facing.DownLeft:
+				rb.AddForce(new Vector2(-DashForce / 1.5f, -DashForce / 1.5f), ForceMode2D.Impulse);
+				break;
+			case Facing.DownRight:
+				rb.AddForce(new Vector2(DashForce / 1.5f, -DashForce / 1.5f), ForceMode2D.Impulse);
+				break;
+		}
+		
+		DashParticles.Play();
+		
+		yield return new WaitForSeconds(0.2f);
+		
+		CanMove = true;
+		
+		yield return new WaitForSeconds(DashCooldown);
+		
+		dashing = false;
+	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
@@ -181,11 +258,13 @@ public class PlayerController : MonoBehaviour
 		newScale *= ScaleIncrease;
 		cameraSize *= ScaleIncrease;
 		MoveSpeed *= ScaleIncrease;
-		growthValue += 1;
+		PuffParticles.transform.localScale *= ScaleIncrease;
+		DashParticles.transform.localScale *= ScaleIncrease;
+		GrowthValue += 1;
 
 		Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, GrowCircleRadius);
 
-		GetComponentInChildren<ParticleSystem>().Play();
+		PuffParticles.Play();
 		
 		foreach (Collider2D collider in nearbyObjects)
 		{
