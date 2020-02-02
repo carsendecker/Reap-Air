@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
 		Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, GrowCircleRadius);
 
-		//Spawn particles here//
+		GetComponentInChildren<ParticleSystem>().Play();
 		
 		foreach (Collider2D collider in nearbyObjects)
 		{

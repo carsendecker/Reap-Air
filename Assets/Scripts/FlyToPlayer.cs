@@ -31,7 +31,7 @@ public class FlyToPlayer : MonoBehaviour
 
     IEnumerator WaitToFly()
     {
-        yield return new WaitForSeconds(FlyDelay);
+        yield return new WaitForSeconds(Random.Range(FlyDelay - 0.3f, FlyDelay + 0.3f));
         startFlying = true;
     }
     
