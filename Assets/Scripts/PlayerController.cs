@@ -56,34 +56,43 @@ public class PlayerController : MonoBehaviour
     		
     		if (Input.GetKey(KeyCode.D))
     		{
-    			tempVel.x = Mathf.Lerp(tempVel.x, MoveSpeed, 0.2f);
+//    			tempVel.x = Mathf.Lerp(tempVel.x, MoveSpeed, 0.8f);
+			    tempVel.x = MoveSpeed;
 		    }
 		    else if (Input.GetKey(KeyCode.A))
     		{
-    			tempVel.x = Mathf.Lerp(tempVel.x, -MoveSpeed, 0.2f);
+//    			tempVel.x = Mathf.Lerp(tempVel.x, -MoveSpeed, 0.8f);
+			    tempVel.x = -MoveSpeed;
 		    }
     		else
     		{
-    			tempVel.x = Mathf.Lerp(tempVel.x, 0, 0.2f);
+//    			tempVel.x = Mathf.Lerp(tempVel.x, 0, 0.8f);
+			    tempVel.x = 0f;
+
     		}
     		
 		    if (Input.GetKey(KeyCode.W))
     		{
-    			tempVel.y = Mathf.Lerp(tempVel.y, MoveSpeed, 0.2f);
-    		}
+//    			tempVel.y = Mathf.Lerp(tempVel.y, MoveSpeed, 0.8f);
+			    tempVel.y = MoveSpeed;
+		    }
 		    else if (Input.GetKey(KeyCode.S))
     		{
-    			tempVel.y = Mathf.Lerp(tempVel.y, -MoveSpeed, 0.2f);
+//    			tempVel.y = Mathf.Lerp(tempVel.y, -MoveSpeed, 0.8f);
+			    tempVel.y = -MoveSpeed;
     		}
     		else
     		{
-    			tempVel.y = Mathf.Lerp(tempVel.y, 0, 0.2f);
+//    			tempVel.y = Mathf.Lerp(tempVel.y, 0, 0.8f);
+			    tempVel.y = 0;
     		}
     		
     		rb.velocity = tempVel;
 
 			if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) {
 				animator.SetInteger("Direction", -1);
+				animator.SetBool("isWalking", false);
+				
 			}
 
 		    if (rb.velocity.x > 0.1f)
@@ -153,7 +162,6 @@ public class PlayerController : MonoBehaviour
 			    else //Idle
 			    {
 				    animator.SetBool("isWalking", false);
-					Debug.Log("Idle");
 			    }
 		    }
     	}
