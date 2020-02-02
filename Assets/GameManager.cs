@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void GameLost()
     {
         Debug.Log("U lose");
+        SceneManager.LoadScene("Lose");
         gameRunning = false;
     }
 }

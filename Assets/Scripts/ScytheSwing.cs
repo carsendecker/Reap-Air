@@ -12,6 +12,8 @@ public class ScytheSwing : MonoBehaviour {
     public SpriteRenderer sr;
     public float lerpSpeed = 0.4f;
     public ScytheBehavior sb;
+    public AudioSource audioSource;
+    public AudioClip punch;
 
 
     // Start is called before the first frame update
@@ -25,9 +27,11 @@ public class ScytheSwing : MonoBehaviour {
         Facing direction = pc.FaceDir;
 
         if (Input.GetKeyDown(attackButton) && !midAttack) {
+
             midAttack = true;
             sb.attacking = true;
             StartCoroutine(Swing(direction));
+            audioSource.PlayOneShot(punch);
         }
 
         if (pc.isFacingLeft) {

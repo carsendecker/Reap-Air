@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Facing
 {
@@ -67,7 +68,12 @@ public class PlayerController : MonoBehaviour
 			StartCoroutine(Dash());
 		}
 
-		GameObject.FindWithTag("Grass").GetComponent<GrassColorChange>().transition = GrowthValue / 30;
+
+		if (GrowthValue >= 30) {
+			SceneManager.LoadScene("Win");
+			Debug.Log("W");
+		}
+		GameObject.FindWithTag("Grass").GetComponent<GrassColorChange>().transition = GrowthValue / 20;
 	}
 
 	void FixedUpdate()
