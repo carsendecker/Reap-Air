@@ -193,11 +193,12 @@ public class PlayerController : MonoBehaviour
 
 	private IEnumerator Dash()
 	{
-		switch (FaceDir)
-		{
-			case 0:
-				
-		}
+//		switch (FaceDir)
+//		{
+//			case 0:
+//				
+//		}
+		yield return 0;
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
