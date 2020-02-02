@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
 	public float GrowCircleRadius;
 	public float DashCooldown;
 	public float GrowthValue;
+	public float DashForce;
+	
+	[HideInInspector] public Facing FaceDir;
 	[HideInInspector] public bool isFacingLeft;
 
 	private Rigidbody2D rb;
@@ -34,7 +37,6 @@ public class PlayerController : MonoBehaviour
 	private Vector3 newScale;
 	private float cameraSize;
 	private bool dashing;
-	private Facing FaceDir;
 	
 	void Start()
 	{
@@ -194,13 +196,36 @@ public class PlayerController : MonoBehaviour
 
 	private IEnumerator Dash()
 	{
+		CanMove = false;
 		switch (FaceDir)
 		{
-			case 0:
-				rb.AddForce(new Vector2());
+			case Facing.Up:
+				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+				break;
+			case Facing.Down:
+				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+				break;
+			case Facing.Left:
+				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+				break;
+			case Facing.Right:
+				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+				break;
+			case Facing.UpRight:
+				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+
+				break;
+			case Facing.UpLeft:
+				break;
+			case Facing.DownLeft:
+				break;
+			case Facing.DownRight:
 				break;
 		}
-		yield return 0;
+		
+		yield return new WaitForSeconds(DashCooldown);
+		
+		CanMove = true;
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
