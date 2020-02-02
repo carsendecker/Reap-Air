@@ -27,6 +27,8 @@ public class ScytheSwing : MonoBehaviour {
 
         if (pc.isFacingLeft) {
             sr.flipX = true;
+        } else {
+            sr.flipX = false;
         }
         
     }
