@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 		else
 			sr.flipX = false;
 
-		if (Input.GetKeyDown(KeyCode.Space) && !dashing)
+		if (Input.GetKeyDown(KeyCode.LeftShift) && !dashing)
 		{
 			StartCoroutine(Dash());
 		}

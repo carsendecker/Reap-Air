@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Growable : MonoBehaviour
 {
-    public Sprite GrownSprite;
+    public Sprite[] GrownSprites;
     
     public void Grow()
     {
-        GetComponent<SpriteRenderer>().sprite = GrownSprite;
+        GetComponent<SpriteRenderer>().sprite = GrownSprites[Random.Range(0, GrownSprites.Length)];
     }
 }
