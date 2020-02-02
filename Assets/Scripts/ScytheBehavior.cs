@@ -27,6 +27,8 @@ public class ScytheBehavior : MonoBehaviour {
 
         if (other.tag == "Oxygen" && attacking) {
             attacking = false;
+            other.transform.parent.GetComponent<Rigidbody2D>().AddForce((other.transform.position - transform.position) * 5f, ForceMode2D.Impulse);
+            other.transform.parent.GetComponent<EnemyBehavior>().Die();
         }
     }
 }

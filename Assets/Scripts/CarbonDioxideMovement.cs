@@ -20,7 +20,7 @@ public class CarbonDioxideMovement : MonoBehaviour {
         destTimer = Random.Range(1f, 4f);
 
         rb = GetComponent<Rigidbody2D>();
-        movement = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+        movement = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         StartCoroutine(NewDestination());
     }
 

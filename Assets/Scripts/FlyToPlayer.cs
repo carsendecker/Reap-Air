@@ -15,6 +15,7 @@ public class FlyToPlayer : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindWithTag("Player").transform;
+        GetComponent<Collider2D>().enabled = false;
         StartCoroutine(WaitToFly());
     }
 
@@ -32,6 +33,8 @@ public class FlyToPlayer : MonoBehaviour
     IEnumerator WaitToFly()
     {
         yield return new WaitForSeconds(Random.Range(FlyDelay - 0.3f, FlyDelay + 0.3f));
+        GetComponent<Collider2D>().enabled = true;
+
         startFlying = true;
     }
     
