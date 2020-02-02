@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 	public float MoveSpeed;
 	public bool CanMove = true;
+	public float GrowCircleRadius;
 
 	private Rigidbody2D rb;
 	private Animator animator;
@@ -181,6 +182,16 @@ public class PlayerController : MonoBehaviour
 		cameraSize *= ScaleIncrease;
 		MoveSpeed *= ScaleIncrease;
 		growthValue += 1;
+
+		Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, GrowCircleRadius);
+
+		//Spawn particles
+		
+		foreach (Collider2D collider in nearbyObjects)
+		{
+			Debug.Log(collider.gameObject.name);
+			DecorManager.DM.GrowObject(collider.gameObject);
+		}
 	}
 	
 }

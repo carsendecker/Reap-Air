@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Grow
   - Wall
+  - Oxygen
+  - Carbon
+  - Weapon
+  - GrowDecor
   layers:
   - Default
   - TransparentFX

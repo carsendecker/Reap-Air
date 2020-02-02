@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DecorManager : MonoBehaviour
 {
+    public static DecorManager DM;
+    
     //List of possible objects to spawn
     public List<GameObject> GrowableObjects = new List<GameObject>();
     public List<GameObject> RemovableObjects = new List<GameObject>();
@@ -12,12 +14,20 @@ public class DecorManager : MonoBehaviour
     public List<GameObject> GrowablesInScene = new List<GameObject>();
     public List<GameObject> RemovablesInScene = new List<GameObject>();
 
+    public Vector2 MapBounds;
+
+    void Awake()
+    {
+        DM = this;
+    }
 
     public void InstantiateRandomObject()
     {
-//        GameObject newObject = 
+        GameObject newObject = GrowableObjects[Random.Range(0, GrowableObjects.Count)];
+        GameObject obj = Instantiate(newObject, new Vector2(Random.Range(-MapBounds.x, MapBounds.x), Random.Range(-MapBounds.y, MapBounds.y)), Quaternion.identity);
+
+        GrowablesInScene.Add(obj);
     }
-    
     
     public void RemoveRandomObject(float numberToRemove)
     {
@@ -30,18 +40,10 @@ public class DecorManager : MonoBehaviour
         }
     }
 
-    public void GrowRandomObject(float numberToGrow)
+    public void GrowObject(GameObject toGrow)
     {
-        for (int i = 0; i < numberToGrow; i++)
-        {
-            GameObject toGrow = GrowablesInScene[Random.Range(0, RemovablesInScene.Count)];
-            toGrow.GetComponent<Growable>().Grow();
-
-            RemovablesInScene.Remove(toGrow);
-
-            
-            Destroy(toGrow);
-            
-        }
+        if (!toGrow.CompareTag("GrowDecor")) return;
+        
+        toGrow.GetComponent<Growable>().Grow();
     }
 }
