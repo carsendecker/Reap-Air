@@ -8,6 +8,9 @@ public class EnemyBehavior : MonoBehaviour {
     public GameObject carbon;
     public GameObject oxygen;
 
+    [Space(10)] public GameObject CParticle;
+    public float ExplodeForce;
+
     // Start is called before the first frame update
     void Start() {
     
@@ -15,12 +18,23 @@ public class EnemyBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+            Die();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Weapon") {
-            Destroy(carbon);
+        if (other.CompareTag("Weapon")) {
+            Die();
         }
+    }
+
+    void Die()
+    {
+        for(int i = 0; i < Random.Range(2, 4); i++)
+        {
+            GameObject particle = Instantiate(CParticle, carbon.transform.position, Quaternion.identity);
+            particle.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * ExplodeForce, ForceMode2D.Impulse);
+        }
+        Destroy(carbon);
     }
 }
