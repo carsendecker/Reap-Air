@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
 		newScale *= ScaleIncrease;
 		cameraSize *= ScaleIncrease;
 		MoveSpeed *= ScaleIncrease;
-		growthValue += 1;
+		GrowthValue += 1;
 
 		Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, GrowCircleRadius);
 
