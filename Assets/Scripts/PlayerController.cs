@@ -25,8 +25,12 @@ public class PlayerController : MonoBehaviour
 	public float GrowthValue;
 	public float DashForce;
 	
-	[HideInInspector] public Facing FaceDir;
+	public Facing FaceDir;
 	[HideInInspector] public bool isFacingLeft;
+
+	[Space(10)] 
+	public ParticleSystem PuffParticles;
+	public ParticleSystem DashParticles;
 
 	private Rigidbody2D rb;
 	private Animator animator;
@@ -197,35 +201,45 @@ public class PlayerController : MonoBehaviour
 	private IEnumerator Dash()
 	{
 		CanMove = false;
+		dashing = true; 
+		
 		switch (FaceDir)
 		{
 			case Facing.Up:
 				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
 				break;
 			case Facing.Down:
-				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+				rb.AddForce(new Vector2(0, -DashForce), ForceMode2D.Impulse);
 				break;
 			case Facing.Left:
-				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+				rb.AddForce(new Vector2(-DashForce, 0), ForceMode2D.Impulse);
 				break;
 			case Facing.Right:
-				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
+				rb.AddForce(new Vector2(DashForce, 0), ForceMode2D.Impulse);
 				break;
 			case Facing.UpRight:
-				rb.AddForce(new Vector2(0, DashForce), ForceMode2D.Impulse);
-
+				rb.AddForce(new Vector2(DashForce / 1.5f, DashForce / 1.5f), ForceMode2D.Impulse);
 				break;
 			case Facing.UpLeft:
+				rb.AddForce(new Vector2(-DashForce / 1.5f, DashForce / 1.5f), ForceMode2D.Impulse);
 				break;
 			case Facing.DownLeft:
+				rb.AddForce(new Vector2(-DashForce / 1.5f, -DashForce / 1.5f), ForceMode2D.Impulse);
 				break;
 			case Facing.DownRight:
+				rb.AddForce(new Vector2(DashForce / 1.5f, -DashForce / 1.5f), ForceMode2D.Impulse);
 				break;
 		}
 		
-		yield return new WaitForSeconds(DashCooldown);
+		DashParticles.Play();
+		
+		yield return new WaitForSeconds(0.2f);
 		
 		CanMove = true;
+		
+		yield return new WaitForSeconds(DashCooldown);
+		
+		dashing = false;
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -242,11 +256,13 @@ public class PlayerController : MonoBehaviour
 		newScale *= ScaleIncrease;
 		cameraSize *= ScaleIncrease;
 		MoveSpeed *= ScaleIncrease;
+		PuffParticles.transform.localScale *= ScaleIncrease;
+		DashParticles.transform.localScale *= ScaleIncrease;
 		GrowthValue += 1;
 
 		Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, GrowCircleRadius);
 
-		GetComponentInChildren<ParticleSystem>().Play();
+		PuffParticles.Play();
 		
 		foreach (Collider2D collider in nearbyObjects)
 		{
