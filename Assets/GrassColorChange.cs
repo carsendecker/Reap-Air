@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrassColorChange : MonoBehaviour
-{
+public class GrassColorChange : MonoBehaviour {
+    public Color grassColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +13,6 @@ public class GrassColorChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // grasscol
     }
 }

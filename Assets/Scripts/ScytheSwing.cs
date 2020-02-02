@@ -9,6 +9,7 @@ public class ScytheSwing : MonoBehaviour {
     public GameObject scythe;
     public float swingSpeed = 3;
     public PlayerController pc;
+    public SpriteRenderer sr;
 
 
     // Start is called before the first frame update
@@ -22,6 +23,10 @@ public class ScytheSwing : MonoBehaviour {
         if (Input.GetKeyDown(attackButton) && !midAttack) {
             midAttack = true;
             StartCoroutine(Swing());
+        }
+
+        if (pc.isFacingLeft) {
+            sr.flipX = true;
         }
         
     }
