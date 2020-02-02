@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 			StartCoroutine(Dash());
 		}
 
-		GameObject.FindWithTag("Grass").GetComponent<GrassColorChange>().transition = GrowthValue / 20;
+		GameObject.FindWithTag("Grass").GetComponent<GrassColorChange>().transition = GrowthValue / 30;
 	}
 
 	void FixedUpdate()
