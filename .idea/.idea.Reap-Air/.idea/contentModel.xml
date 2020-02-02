@@ -13,6 +13,7 @@
           <e p="DecorManager.cs" t="Include" />
           <e p="EnemyBehavior.cs" t="Include" />
           <e p="FlyToPlayer.cs" t="Include" />
+          <e p="FootstepsSound.cs" t="Include" />
           <e p="Growable.cs" t="Include" />
           <e p="HowToPlay.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />

@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 	private Animator animator;
 	private SpriteRenderer sr;
 	
-	private const float ScaleIncrease = 1.05f;
+	private const float ScaleIncrease = 1.015f;
 	
 	private Vector3 newScale;
 	private float cameraSize;
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 
-		if (GrowthValue >= 30) {
+		if (GrowthValue >= 75) {
 			SceneManager.LoadScene("Win");
 			Debug.Log("W");
 		}
@@ -267,6 +267,13 @@ public class PlayerController : MonoBehaviour
 		PuffParticles.transform.localScale *= ScaleIncrease;
 		DashParticles.transform.localScale *= ScaleIncrease;
 		GrowthValue += 1;
+
+		CarbonDioxideMovement[] enemies = FindObjectsOfType<CarbonDioxideMovement>();
+
+		foreach (var thing in enemies)
+		{
+			thing.transform.localScale *= ScaleIncrease;
+		}
 
 		Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, GrowCircleRadius);
 

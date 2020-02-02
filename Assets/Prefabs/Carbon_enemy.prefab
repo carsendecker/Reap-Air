@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7777062227901102032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8105602650810672259}
   m_RootOrder: 0
@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.09257877, y: -0.014382171}
   serializedVersion: 2
-  m_Radius: 0.04565041
+  m_Radius: 0.03
 --- !u!58 &3615163621267512650
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.085582614, y: -0.017347837}
   serializedVersion: 2
-  m_Radius: 0.045485925
+  m_Radius: 0.03
 --- !u!1 &8105602650810672261
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 1695765694263103939}
   - component: {fileID: 6298559975819886673}
   - component: {fileID: 1475292793647824448}
+  - component: {fileID: 6887262403867917353}
   m_Layer: 0
   m_Name: Carbon_enemy
   m_TagString: Carbon
@@ -192,7 +193,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8105602650810672261}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -200,7 +201,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0017704845, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08976994
+  m_Radius: 0.09
 --- !u!58 &6298559975819886673
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -232,3 +233,19 @@ MonoBehaviour:
   CParticle: {fileID: 3917430545941697810, guid: 1c846fa2a8af04ca1b60996cca9bcbf5,
     type: 3}
   ExplodeForce: 30
+--- !u!70 &6887262403867917353
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105602650810672261}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.15, y: 0.26}
+  m_Direction: 0

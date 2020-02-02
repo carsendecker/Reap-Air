@@ -26,7 +26,7 @@ public class EnemyBehavior : MonoBehaviour {
 
     public void Die()
     {
-        for(int i = 0; i < Random.Range(2, 4); i++)
+        for(int i = 0; i < Random.Range(2, 3); i++)
         {
             GameObject particle = Instantiate(CParticle, transform.position, Quaternion.identity);
             particle.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * ExplodeForce, ForceMode2D.Impulse);
