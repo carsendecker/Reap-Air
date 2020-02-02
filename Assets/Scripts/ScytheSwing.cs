@@ -160,21 +160,42 @@ public class ScytheSwing : MonoBehaviour {
                 scythe.transform.rotation = Quaternion.Euler(0f,0f,0f);
                 break;
             case Facing.UpRight: 
-                for (int i = 0; i < 40 / swingSpeed; i++) {
-                    scythe.transform.localPosition = Vector3.Lerp(scythe.transform.localPosition, new Vector3(0.071f, 0.17f, 0f), lerpSpeed);
-                    scythe.transform.Rotate(new Vector3(0f, 0f, -swingSpeed * 0.9f));
+                for (int i = 0; i < 240 / swingSpeed; i++) {
+                    scythe.transform.localPosition = Vector3.Lerp(scythe.transform.localPosition, new Vector3(0.151f, 0.004f, 0f), lerpSpeed);
+                    scythe.transform.Rotate(new Vector3(0f, 0f, swingSpeed * 0.9f));
                     // scythe.transform.localRotation = Quaternion.Slerp(scythe.transform.localRotation, Quaternion.Euler(0, 0, 120f), lerpSpeed);
                     yield return 0;
                 }
-                for (int i = 0; i < 100 / swingSpeed; i ++) {
-                    scythe.transform.localPosition = Vector3.Lerp(scythe.transform.localPosition, new Vector3(-0.128f, 0.054f, 0f), lerpSpeed);
+                for (int i = 0; i < 60 / swingSpeed; i ++) {
+                    scythe.transform.localPosition = Vector3.Lerp(scythe.transform.localPosition, new Vector3(-0.096f, 0.123f, 0f), lerpSpeed);
                     scythe.transform.Rotate(new Vector3(0f, 0f, swingSpeed * 1.2f));
                     // scythe.transform.localRotation = Quaternion.Slerp(scythe.transform.localRotation, Quaternion.Euler(0, 0, 240f), lerpSpeed);
                     yield return 0;
                 }
-                for (int i = 0; i < 300 / swingSpeed; i ++) {
+                for (int i = 0; i < 60 / swingSpeed; i ++) {
                     scythe.transform.localPosition = Vector3.Lerp(scythe.transform.localPosition, new Vector3(0f, 0f, 0f), lerpSpeed);
                     scythe.transform.Rotate(new Vector3(0f, 0f, swingSpeed * 0.9f));
+                    // scythe.transform.localRotation = Quaternion.Slerp(scythe.transform.localRotation, Quaternion.Euler(0, 0, 0f), lerpSpeed);
+                    yield return 0;
+                }
+                scythe.transform.rotation = Quaternion.Euler(0f,0f,0f);
+                break;
+            case Facing.UpLeft: 
+                for (int i = 0; i < 240 / swingSpeed; i++) {
+                    scythe.transform.localPosition = Vector3.Lerp(scythe.transform.localPosition, new Vector3(-0.151f, 0.004f, 0f), lerpSpeed);
+                    scythe.transform.Rotate(new Vector3(0f, 0f, -swingSpeed * 0.9f));
+                    // scythe.transform.localRotation = Quaternion.Slerp(scythe.transform.localRotation, Quaternion.Euler(0, 0, 120f), lerpSpeed);
+                    yield return 0;
+                }
+                for (int i = 0; i < 60 / swingSpeed; i ++) {
+                    scythe.transform.localPosition = Vector3.Lerp(scythe.transform.localPosition, new Vector3(0.096f, 0.123f, 0f), lerpSpeed);
+                    scythe.transform.Rotate(new Vector3(0f, 0f, -swingSpeed * 1.2f));
+                    // scythe.transform.localRotation = Quaternion.Slerp(scythe.transform.localRotation, Quaternion.Euler(0, 0, 240f), lerpSpeed);
+                    yield return 0;
+                }
+                for (int i = 0; i < 60 / swingSpeed; i ++) {
+                    scythe.transform.localPosition = Vector3.Lerp(scythe.transform.localPosition, new Vector3(0f, 0f, 0f), lerpSpeed);
+                    scythe.transform.Rotate(new Vector3(0f, 0f, -swingSpeed * 0.9f));
                     // scythe.transform.localRotation = Quaternion.Slerp(scythe.transform.localRotation, Quaternion.Euler(0, 0, 0f), lerpSpeed);
                     yield return 0;
                 }
