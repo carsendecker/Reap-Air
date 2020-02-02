@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Facing
 {
@@ -65,6 +66,10 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.LeftShift) && !dashing)
 		{
 			StartCoroutine(Dash());
+		}
+
+		if (GrowthValue >= 30) {
+			SceneManager.LoadScene("WIN");
 		}
 	}
 
