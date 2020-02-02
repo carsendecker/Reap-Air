@@ -198,6 +198,7 @@ public class PlayerController : MonoBehaviour
 		{
 			case 0:
 				rb.AddForce(new Vector2());
+				break;
 		}
 		yield return 0;
 	}
